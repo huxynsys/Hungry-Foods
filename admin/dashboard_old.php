@@ -180,27 +180,28 @@ $customers = $conn->query("SELECT id, full_name, email, created_at, (SELECT COUN
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Hungry Food</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
     <style>
         :root {
-            --bg: #f8fafc;
+            --bg: #121212;
             --primary: #FF6B35;
             --primary-dark: #e55a2b;
             --primary-light: #ff8c5a;
             --accent: #F7931E;
             --accent-dark: #d9801a;
             --accent-light: #ffb347;
-            --accent-glow: rgba(255,107,53,0.2);
+            --accent-glow: rgba(247,147,30,0.3);
             --white: #FFFFFF;
-            --text-muted: #64748b;
-            --card-bg: #FFFFFF;
-            --danger: #ef4444;
-            --warning: #f59e0b;
-            --info: #3b82f6;
-            --dark-gray: #f8fafc;
-            --light-gray: #f1f5f9;
-            --border-color: #e2e8f0;
+            --text-muted: #BBBBBB;
+            --card-bg: #1E1E1E;
+            --danger: #E74C3C;
+            --warning: #F39C12;
+            --info: #3498DB;
+            --dark-gray: #1a1a1a;
+            --light-gray: #2a2a2a;
+            --border-color: rgba(255, 255, 255, 0.1);
             --gradient-primary: linear-gradient(135deg, var(--primary), var(--accent));
             --gradient-accent: linear-gradient(135deg, var(--accent), var(--accent-dark));
             --gradient-danger: linear-gradient(135deg, #E74C3C, #C0392B);
@@ -214,31 +215,31 @@ $customers = $conn->query("SELECT id, full_name, email, created_at, (SELECT COUN
             --transition: 0.2s ease;
         }
         *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:'Inter',sans-serif;background:var(--bg);color:#1e293b;display:flex;min-height:100vh;overflow-x:hidden}
+        body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--white);display:flex;min-height:100vh;overflow-x:hidden}
         ::-webkit-scrollbar{width:6px}
-        ::-webkit-scrollbar-track{background:#f1f5f9}
+        ::-webkit-scrollbar-track{background:var(--dark-gray)}
         ::-webkit-scrollbar-thumb{background:var(--gradient-primary);border-radius:10px}
 
         /* Sidebar */
-        .sidebar{width:260px;background:var(--white);border-right:1px solid var(--border-color);display:flex;flex-direction:column;position:fixed;height:100vh;z-index:100;overflow-y:auto;box-shadow:4px 0 20px rgba(0,0,0,0.05)}
-        .sb-logo{padding:2rem 1.5rem;font-size:1.6rem;font-weight:900;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;text-align:center;font-family:'Poppins',sans-serif}
-        .sb-user{padding:1.2rem 1.5rem;display:flex;align-items:center;gap:10px;border-bottom:2px solid #f1f5f9;background:#f8fafc}
-        .sb-avatar{width:45px;height:45px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-dark));display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;color:white;box-shadow:0 4px 10px rgba(255,107,53,0.2)}
-        .sb-name{font-weight:600;color:#1e293b;font-size:0.95rem}.sb-role{font-size:0.8rem;color:var(--text-muted)}
+        .sidebar{width:260px;background:var(--card-bg);border-right:1px solid var(--border-color);display:flex;flex-direction:column;position:fixed;height:100vh;z-index:100;overflow-y:auto}
+        .sb-logo{padding:1.5rem;font-size:1.5rem;font-weight:900;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .sb-user{padding:1rem 1.5rem;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border-color)}
+        .sb-avatar{width:36px;height:36px;border-radius:50%;background:var(--gradient-primary);display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700}
+        .sb-name{font-weight:600}.sb-role{font-size:0.7rem;color:var(--text-muted)}
         .sb-links{flex:1;padding:1rem}
         .sb-links a{display:flex;align-items:center;gap:12px;padding:0.8rem 1rem;color:var(--text-muted);text-decoration:none;border-radius:var(--radius-sm);transition:all var(--transition);font-weight:500}
-        .sb-links a:hover,.sb-links a.active{background:#f1f5f9;color:var(--primary);border-left:3px solid var(--primary)}
-        .sb-links a.active{color:var(--primary);font-weight:600}
+        .sb-links a:hover,.sb-links a.active{background:rgba(255,107,53,0.1);color:var(--white)}
+        .sb-links a.active{color:var(--primary)}
         .sb-links .sep{height:1px;background:var(--border-color);margin:0.5rem 0}
-        .sb-foot{padding:1rem;border-top:2px solid #f1f5f9}
-        .logout-btn{display:flex;align-items:center;gap:12px;padding:0.9rem 1rem;color:var(--danger);text-decoration:none;border-radius:10px;transition:all 0.3s;font-weight:600;background:#fef2f2}
-        .logout-btn:hover{background:#fee2e2;transform:translateX(3px)}
+        .sb-foot{padding:1rem;border-top:1px solid var(--border-color)}
+        .logout-btn{display:flex;align-items:center;gap:12px;padding:0.8rem 1rem;color:var(--danger);text-decoration:none;border-radius:var(--radius-sm);transition:var(--transition);font-weight:500}
+        .logout-btn:hover{background:rgba(231,76,60,0.1)}
 
         /* Main */
         .main{margin-left:260px;flex:1;display:flex;flex-direction:column}
-        .topbar{padding:1.5rem 2rem;background:var(--white);border-bottom:1px solid var(--border-color);display:flex;align-items:center;gap:1rem;position:sticky;top:0;z-index:50;box-shadow:0 2px 10px rgba(0,0,0,0.03)}
-        .topbar h1{font-size:1.5rem;font-weight:700;color:#1e293b;font-family:'Poppins',sans-serif}
-        .topbar .breadcrumb{font-size:0.85rem;color:var(--text-muted);font-weight:500}
+        .topbar{padding:1rem 1.5rem;background:var(--card-bg);border-bottom:1px solid var(--border-color);display:flex;align-items:center;gap:1rem;position:sticky;top:0;z-index:50}
+        .topbar h1{font-size:1.1rem;font-weight:600}
+        .topbar .breadcrumb{font-size:0.8rem;color:var(--text-muted)}
         .date-time{font-family:monospace;color:var(--text-muted);font-size:0.8rem}
         .content{padding:1.5rem;display:flex;flex-direction:column;gap:1.5rem}
         .mobile-menu-btn{display:none;background:none;border:none;color:var(--white);font-size:1.3rem;cursor:pointer}
@@ -262,7 +263,7 @@ $customers = $conn->query("SELECT id, full_name, email, created_at, (SELECT COUN
 
         /* Tables */
         .table-responsive{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border-color);background:var(--card-bg)}
-        table{width:100%;border-collapse:separate;border-spacing:0 0.5rem}
+        table{width:100%;border-collapse:collapse}
         th,td{padding:0.8rem 1rem;text-align:left;border-bottom:1px solid var(--border-color)}
         th{color:var(--text-muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:1px}
         tr:hover{background:rgba(255,255,255,0.02)}
@@ -272,21 +273,21 @@ $customers = $conn->query("SELECT id, full_name, email, created_at, (SELECT COUN
         .bg-danger{background:rgba(231,76,60,0.2);color:#E74C3C}
         .bg-info{background:rgba(52,152,219,0.2);color:#3498DB}
         .btn{padding:0.45rem 1rem;border-radius:var(--radius-full);font-weight:600;font-size:0.85rem;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:var(--transition);text-decoration:none}
-        .btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;box-shadow:0 2px 8px rgba(255,107,53,0.2)}
+        .btn-primary{background:var(--gradient-primary);color:#fff}
         .btn-primary:hover{filter:brightness(1.1)}
         .btn-sm{padding:0.3rem 0.8rem;font-size:0.75rem}
         .btn-danger{background:var(--gradient-danger);color:#fff}
         .btn-info{background:var(--gradient-info);color:#fff}
-        .stock-input{width:80px;padding:0.5rem;border-radius:8px;border:2px solid var(--border-color);background:var(--white);color:#1e293b;text-align:center;font-weight:600}
+        .stock-input{width:80px;padding:0.4rem;border-radius:8px;border:1px solid var(--border-color);background:rgba(255,255,255,0.05);color:#fff}
 
         /* Forms */
-        .card{border:1px solid var(--border-color);border-radius:16px;background:var(--white);box-shadow:0 4px 20px rgba(0,0,0,0.05);margin-bottom:2rem}
-        .card-header{padding:1rem;border-bottom:2px solid #f1f5f9;display:flex;align-items:center;gap:10px;font-weight:600;color:#1e293b}
-        .card-body{padding:1.5rem}
+        .card{border:1px solid var(--border-color);border-radius:var(--radius);background:var(--card-bg)}
+        .card-header{padding:1rem;border-bottom:1px solid var(--border-color);display:flex;align-items:center;gap:10px}
+        .card-body{padding:1.2rem}
         .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-        .form-group label{display:block;font-size:0.9rem;color:#1e293b;margin-bottom:0.5rem;font-weight:600}
-        .form-control{width:100%;padding:0.8rem 1rem;background:var(--white);border:2px solid var(--border-color);border-radius:10px;color:#1e293b;font-family:inherit;transition:all 0.3s}
-        .form-control:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(255,107,53,0.1);outline:none}
+        .form-group label{display:block;font-size:0.8rem;color:var(--text-muted);margin-bottom:0.3rem}
+        .form-control{width:100%;padding:0.7rem;background:var(--light-gray);border:1px solid var(--border-color);border-radius:var(--radius-sm);color:#fff;font-family:inherit}
+        .form-control:focus{border-color:var(--primary)}
 
         /* Charts */
         .chart-card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--radius);padding:1.2rem}
@@ -550,7 +551,50 @@ $customers = $conn->query("SELECT id, full_name, email, created_at, (SELECT COUN
         </div>
     </div>
 
+    <!-- Chart.js scripts -->
     <script>
+        const monthlyData = <?php echo json_encode($monthly); ?>;
+        const ctx1 = document.getElementById('monthlyChart')?.getContext('2d');
+        if (ctx1) {
+            new Chart(ctx1, {
+                type: 'line',
+                data: {
+                    labels: monthlyData.map(m => m.month),
+                    datasets: [{
+                        label: 'Revenue ($)',
+                        data: monthlyData.map(m => m.revenue),
+                        borderColor: '#FF6B35',
+                        backgroundColor: 'rgba(255,107,53,0.1)',
+                        tension: 0.4
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, scales: { y: { grid: { color: 'rgba(255,255,255,0.1)' } }, x: { grid: { color: 'rgba(255,255,255,0.1)' } } } }
+            });
+        }
+
+        const ctx2 = document.getElementById('analyticsMonthly')?.getContext('2d');
+        if (ctx2) {
+            new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: monthlyData.map(m => m.month),
+                    datasets: [{ label: 'Revenue', data: monthlyData.map(m => m.revenue), backgroundColor: '#FF6B35' }]
+                },
+                options: { scales: { y: { grid: { color: 'rgba(255,255,255,0.1)' } }, x: { grid: { color: 'rgba(255,255,255,0.1)' } } } }
+            });
+        }
+        const orderStatus = { pending: <?php echo $stats['pending_orders'];?>, delivered: <?php echo $stats['total_orders']-$stats['pending_orders'];?> };
+        const ctx3 = document.getElementById('orderPie')?.getContext('2d');
+        if (ctx3) {
+            new Chart(ctx3, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Pending/Processing','Delivered'],
+                    datasets: [{ data: [orderStatus.pending,orderStatus.delivered], backgroundColor: ['#F39C12','#27ae60'] }]
+                }
+            });
+        }
+
         document.querySelectorAll('.tab-btn, .nav-link[data-tab]').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
