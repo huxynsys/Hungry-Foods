@@ -1,0 +1,146 @@
+{
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\about.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\admin\\admin\\admin-reservations.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\admin\\admin-login.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\admin\\admin-reservations.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\admin\\dashboard.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\admin\\logout.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\admin\\manage-offers.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\admin\\manage-orders.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\ai.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\backend\\admin-contact.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\backend\\admin-login.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\backend\\contact_process.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\backend\\dashboard.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\backend\\db.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\backend\\function.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\backend\\mailer.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\backend\\reservation_process.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\backend\\session.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\catering.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\chatbot.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\check_updates.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\contact.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\contact_status.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\includes\\footer.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\includes\\functions.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\includes\\header.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\includes\\logout.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\index.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\install.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\login.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\menu.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\order.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\order_confirmation.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\reservation.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\update_quantity.php": {
+        "status": "FAIL",
+        "message": null
+    },
+    "E:\\SOFTWARE\\Xampp\\htdocs\\hungry-food\\_php_lint_check.php": {
+        "status": "FAIL",
+        "message": null
+    }
+}
